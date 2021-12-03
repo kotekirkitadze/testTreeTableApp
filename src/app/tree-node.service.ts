@@ -13,22 +13,6 @@ export class TreeNodeService {
   urlUsers: string = 'http://localhost:5000/users';
   urlDocs: string = 'http://localhost:5000/documents';
 
-  // getPackages(): Observable<TreeNode[]> {
-  //   return this.http.get<TreeNode[]>(this.urlPackages);
-  // }
-
-  // getUsers(packId): Observable<TreeNode[]> {
-  //   return this.http
-  //     .get<TreeNode[]>(this.urlUsers)
-  //     .pipe(map((el) => el.filter((u) => u.data.packageId === packId)));
-  // }
-
-  // getDocs(id): Observable<TreeNode[]> {
-  //   return this.http
-  //     .get<TreeNode[]>(this.urlDocs)
-  //     .pipe(map((el) => el.filter((d) => d.data.useID === id)));
-  // }
-
   getPackages(): Observable<TreeNode[]> {
     return this.http.get<TreeNode[]>(this.urlPackages);
   }
