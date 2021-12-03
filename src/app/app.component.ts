@@ -24,14 +24,12 @@ export class AppComponent implements OnInit {
 
   constructor(private getDataService: TreeNodeService) {}
   ngOnInit() {
-    // this.getDataService.getData().subscribe((d) => (this.files = d));
     this.cols = [
       { field: 'name', header: 'Name' },
       { field: 'size', header: 'Size' },
       { field: 'type', header: 'Type' },
     ];
 
-    //in a production application, retrieve the logical number of rows from a remote datasource
     this.totalRecords = 1000;
 
     this.loading = true;
@@ -39,16 +37,17 @@ export class AppComponent implements OnInit {
   editDoc: boolean = false;
   loadNodes(event) {
     this.loading = true;
-
-    this.getDataService.getPackages().subscribe((d) => {
-      this.files = d
-        .filter((e) => e.data['userNum'] >= 1)
-        .map((d) => {
+    this.getDataService.getPackages().subscribe((packages) => {
+      this.files = packages.map((p) => {
+        if (p.data['userNum'] >= 1) {
           return {
-            ...d,
+            ...p,
             leaf: false,
           };
-        });
+        } else {
+          return p;
+        }
+      });
       this.loading = false;
     });
   }
@@ -56,24 +55,22 @@ export class AppComponent implements OnInit {
   onNodeExpand(event) {
     this.loading = true;
 
-    console.log(event);
-
     let node = event.node;
-    console.log(node.data['PackageId']);
 
-    console.log(node.data['type']);
-    if (event.node.data['type'] == 'paketebi') {
+    if (node.data['type'] == 'paketebi') {
       this.getDataService
-        .getUsers(node.data['PackageId'])
+        .getUsers(node.data['packageId'])
         .subscribe((users) => {
-          node.children = users
-            .filter((user) => user.data['documents'] >= 1)
-            .map((user) => {
+          node.children = users.map((user) => {
+            if (user.data['documents'] >= 1) {
               return {
                 ...user,
                 leaf: false,
               };
-            });
+            } else {
+              return user;
+            }
+          });
           this.loading = false;
           this.files = [...this.files];
         });

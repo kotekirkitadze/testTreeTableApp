@@ -20,7 +20,7 @@ export class TreeNodeService {
   getUsers(packId): Observable<TreeNode[]> {
     return this.http
       .get<TreeNode[]>(this.urlUsers)
-      .pipe(map((el) => el.filter((u) => u.data.PackageId === packId)));
+      .pipe(map((el) => el.filter((u) => u.data.packageId === packId)));
   }
 
   getDocs(id): Observable<TreeNode[]> {

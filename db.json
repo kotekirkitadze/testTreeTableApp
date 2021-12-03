@@ -2,20 +2,11 @@
   "packages": [
     {
       "data": {
-        "name": "Arqivi Paketi",
+        "name": "Arqivis Paketi",
         "size": "2019",
         "type": "paketebi",
-        "PackageId": 222,
+        "packageId": 1111,
         "userNum": 1
-      }
-    },
-    {
-      "data": {
-        "name": "Axlandeli Paketi",
-        "size": "2019",
-        "type": "paketebi",
-        "PackageId": 333,
-        "userNum": 3
       }
     }
   ],
@@ -23,42 +14,12 @@
   "users": [
     {
       "data": {
-        "name": "eeeeee",
-        "Age": "21",
-        "type": "usersType",
-        "PackageId": 333,
-        "userID": 5555,
-        "documents": 1
-      }
-    },
-    {
-      "data": {
-        "name": "bbbbb",
-        "Age": "21",
-        "type": "usersType",
-        "PackageId": 333,
-        "userID": 1111,
-        "documents": 1
-      }
-    },
-    {
-      "data": {
         "name": "Kote",
         "Age": "21",
         "type": "usersType",
-        "PackageId": 222,
+        "packageId": 1111,
         "userID": 888,
         "documents": 2
-      }
-    },
-    {
-      "data": {
-        "name": "theo",
-        "Age": "21",
-        "type": "usersType",
-        "PackageId": 222,
-        "userID": 999,
-        "documents": 4
       }
     }
   ],
@@ -66,50 +27,18 @@
   "documents": [
     {
       "data": {
-        "name": "eeee doki",
+        "name": "kotes doki 1",
         "size": "30kb",
-        "type": "Document",
-        "useID": 5555
-      }
-    },
-    {
-      "data": {
-        "name": "bbbbbb doki",
-        "size": "30kb",
-        "type": "Document",
-        "useID": 1111
-      }
-    },
-    {
-      "data": {
-        "name": "kotes doki",
-        "size": "30kb",
-        "type": "Document",
-        "useID": 888
-      }
-    },
-    {
-      "data": {
-        "name": "kotes doki",
-        "size": "25kb",
         "type": "doc",
         "useID": 888
       }
     },
     {
       "data": {
-        "name": "theos doki 1",
+        "name": "kotes doki 2",
         "size": "25kb",
         "type": "doc",
-        "useID": 999
-      }
-    },
-    {
-      "data": {
-        "name": "theos doki 2",
-        "size": "25kb",
-        "type": "doc",
-        "useID": 999
+        "useID": 888
       }
     }
   ]
