@@ -1,4 +1,4 @@
-<p-treeTable
+<!-- <p-treeTable
   [value]="files"
   [columns]="cols"
   [rows]="10"
@@ -30,10 +30,44 @@
         <span *ngIf="rowData[col.field] !== 'doc'">{{
           rowData[col.field]
         }}</span>
+
         <div *ngIf="i == 2 && editDoc && rowData[col.field] == 'doc'">
           <button (click)="edit(rowData)">Edit</button>
         </div>
       </td>
     </tr>
   </ng-template>
-</p-treeTable>
+</p-treeTable> -->
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let p of packages">
+      <tr>
+        <th scope="row">
+          <button (click)="handle(p)">></button>
+          {{ p.name }}
+        </th>
+        <th scope="row">
+          {{ p.size }}
+        </th>
+        <th scope="row">
+          {{ p.user }}
+        </th>
+        <th scope="row">
+          {{ p.id }}
+        </th>
+      </tr>
+      <tr class="hh" *ngIf="hh(p?.id, users)">
+        <th colspan="3"><app-table [users]="users"></app-table></th>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<!-- *ngIf="hh(p?.id, users)" -->

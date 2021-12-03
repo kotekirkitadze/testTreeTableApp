@@ -1,0 +1,14 @@
+<table class="table child table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of user">
+      <td>{{ user.name }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.id }}</td>
+    </tr>
+  </tbody>
+</table>
