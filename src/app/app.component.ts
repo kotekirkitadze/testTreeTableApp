@@ -30,11 +30,32 @@ export class AppComponent implements OnInit {
   handle(p) {
     this.getDataService.getUser(p.id).subscribe((d) => {
       this.users = [];
-      this.users = d;
+      this.users = [...d].map((e) => {
+        console.log('kkkk', e.name == 'kote');
+        if (e.name == 'kote') {
+          return {
+            data: e,
+            leaf: true,
+            children: [
+              {
+                data: { name: 'kote', age: 22 },
+                leaf: false,
+              },
+            ],
+          };
+        } else {
+          return {
+            data: e,
+            leaf: true,
+          };
+        }
+      });
+      console.log(this.users);
     });
   }
 
   hh(id, u: any[]) {
-    return u?.every((e) => e.id == id);
+    // u?.forEach((e) => console.log(e.data));
+    return u?.every((e) => e?.data?.id == id);
   }
 }
