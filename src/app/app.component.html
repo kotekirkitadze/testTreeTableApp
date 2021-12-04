@@ -1,39 +1,37 @@
-<p-treeTable
-  [value]="files"
-  [columns]="cols"
-  [rows]="10"
-  [lazy]="true"
-  (onLazyLoad)="loadNodes($event)"
-  [totalRecords]="1000"
-  [loading]="loading"
-  (onNodeExpand)="onNodeExpand($event)"
->
-  <ng-template pTemplate="header" let-columns>
+<!-- <table class="table table-striped">
+  <thead>
     <tr>
-      <th *ngFor="let col of columns">
-        {{ col.header }}
-      </th>
+      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
     </tr>
-  </ng-template>
-  <ng-template
-    pTemplate="body"
-    let-rowNode
-    let-rowData="rowData"
-    let-columns="columns"
-  >
-    <tr>
-      <td *ngFor="let col of columns; let i = index">
-        <p-treeTableToggler
-          [rowNode]="rowNode"
-          *ngIf="i == 0"
-        ></p-treeTableToggler>
-        <span *ngIf="rowData[col.field] !== 'doc'">{{
-          rowData[col.field]
-        }}</span>
-        <div *ngIf="i == 2 && editDoc && rowData[col.field] == 'doc'">
-          <button (click)="edit(rowData)">Edit</button>
-        </div>
-      </td>
-    </tr>
-  </ng-template>
-</p-treeTable>
+  </thead> -->
+<!--
+  <tbody>
+    <ng-container *ngFor="let p of packages">
+      <tr>
+        <th scope="row">
+          <button (click)="handle(p['id'])">></button>
+          {{ p["name"] }}
+        </th>
+        <th scope="row">
+          {{ p["size"] }}
+        </th>
+        <th scope="row">
+          {{ p["user"] }}
+        </th>
+        <th scope="row">
+          {{ p["id"] }}
+        </th>
+      </tr>
+      <tr class="hh" *ngIf="hh(p['id'], users)">
+        <th colspan="3"><app-table [node]="users"></app-table></th>
+      </tr>
+    </ng-container>
+  </tbody>
+</table> -->
+
+<!-- *ngIf="hh(p?.id, users)" -->
+<app-table
+  (onExpandEvent)="handleExpand($event)"
+  *ngIf="loaded"
+  [node]="users"
+></app-table>

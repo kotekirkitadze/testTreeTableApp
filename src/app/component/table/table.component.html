@@ -1,0 +1,24 @@
+<table class="table child table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of node">
+      <tr>
+        <td *ngFor="let field of headers; let i = index">
+          <button
+            (click)="clickExpand(item)"
+            *ngIf="leaf && i == 0 && item?.children != null"
+          >
+            ></button
+          >{{ item.data[field] }}
+        </td>
+      </tr>
+      <tr *ngIf="item?.children && handleThis(item)">
+        <th colspan="3"><app-table [node]="item?.children"></app-table></th>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

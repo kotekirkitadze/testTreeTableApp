@@ -16,16 +16,8 @@ export class TreeNodeService {
   getPackages(): Observable<TreeNode[]> {
     return this.http.get<TreeNode[]>(this.urlPackages);
   }
-
-  getUsers(packId): Observable<TreeNode[]> {
-    return this.http
-      .get<TreeNode[]>(this.urlUsers)
-      .pipe(map((el) => el.filter((u) => u.data.packageId === packId)));
-  }
-
-  getDocs(id): Observable<TreeNode[]> {
-    return this.http
-      .get<TreeNode[]>(this.urlDocs)
-      .pipe(map((el) => el.filter((d) => d.data.useID === id)));
+  getUser() {
+    return this.http.get<any>(this.urlUsers);
+    // .pipe(map((d) => d.filter((e) => e.id == id)));
   }
 }

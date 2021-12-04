@@ -1,45 +1,29 @@
 {
   "packages": [
     {
-      "data": {
-        "name": "Arqivis Paketi",
-        "size": "2019",
-        "type": "paketebi",
-        "packageId": 1111,
-        "userNum": 1
-      }
-    }
-  ],
-
-  "users": [
-    {
-      "data": {
-        "name": "Kote",
-        "Age": "21",
-        "type": "usersType",
-        "packageId": 1111,
-        "userID": 888,
-        "documents": 2
-      }
-    }
-  ],
-
-  "documents": [
-    {
-      "data": {
-        "name": "kotes doki 1",
-        "size": "30kb",
-        "type": "doc",
-        "useID": 888
-      }
+      "name": "arqivi",
+      "size": 10,
+      "user": 1,
+      "id": 22
     },
     {
-      "data": {
-        "name": "kotes doki 2",
-        "size": "25kb",
-        "type": "doc",
-        "useID": 888
-      }
+      "name": "arqivi1",
+      "size": 101,
+      "user": 11,
+      "id": 22122
+    }
+  ],
+
+  "Users": [
+    {
+      "name": "kote",
+      "age": 21,
+      "id": 22
+    },
+    {
+      "name": "theo",
+      "age": 23,
+      "id": 22
     }
   ]
 }

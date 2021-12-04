@@ -14,80 +14,87 @@ export interface TreeNode {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  files: TreeNode[];
-
-  cols: any[];
-
-  totalRecords: number;
-
-  loading: boolean;
-
   constructor(private getDataService: TreeNodeService) {}
+  loaded = false;
+  show: boolean = false;
+  packages: TreeNode[] = [];
+  headers = [];
   ngOnInit() {
-    this.cols = [
-      { field: 'name', header: 'Name' },
-      { field: 'size', header: 'Size' },
-      { field: 'type', header: 'Type' },
-    ];
-
-    this.totalRecords = 1000;
-
-    this.loading = true;
-  }
-  editDoc: boolean = false;
-  loadNodes(event) {
-    this.loading = true;
-    this.getDataService.getPackages().subscribe((packages) => {
-      this.files = packages.map((p) => {
-        if (p.data['userNum'] >= 1) {
+    // this.getDataService.getPackages().subscribe((pac) => {
+    //   this.packages = pac;
+    //   console.log(pac);
+    //   this.headers = Object.keys(this?.packages[0]);
+    // });
+    this.getDataService.getUser().subscribe((d) => {
+      this.users = [];
+      this.users = [...d].map((e) => {
+        if (e.name == 'kote') {
           return {
-            ...p,
-            leaf: false,
+            data: e,
+            leaf: true,
+            children: [
+              {
+                data: { docName: 'sabuti 1', created: 2021 },
+                leaf: false,
+              },
+            ],
           };
         } else {
-          return p;
+          return {
+            data: e,
+            leaf: true,
+            children: [
+              {
+                data: { docName: 'sabuti 22', created: 2020 },
+                leaf: false,
+              },
+            ],
+          };
         }
       });
-      this.loading = false;
+      this.loaded = true;
+      console.log(this.loaded);
     });
   }
 
-  onNodeExpand(event) {
-    this.loading = true;
-
-    let node = event.node;
-
-    if (node.data['type'] == 'paketebi') {
-      this.getDataService
-        .getUsers(node.data['packageId'])
-        .subscribe((users) => {
-          node.children = users.map((user) => {
-            if (user.data['documents'] >= 1) {
-              return {
-                ...user,
+  handleExpand(e) {
+    console.log(e);
+  }
+  users: any;
+  handle(id) {
+    this.getDataService.getUser().subscribe((d) => {
+      this.users = [];
+      this.users = [...d].map((e) => {
+        if (e.name == 'kote') {
+          return {
+            data: e,
+            leaf: true,
+            children: [
+              {
+                data: { docName: 'sabuti 1', created: 2021 },
                 leaf: false,
-              };
-            } else {
-              return user;
-            }
-          });
-          this.loading = false;
-          this.files = [...this.files];
-        });
-    }
-
-    if (node.data['type'] == 'usersType') {
-      this.getDataService.getDocs(node.data['userID']).subscribe((docs) => {
-        node.children = docs;
-        this.loading = false;
-        this.editDoc = true;
-        this.files = [...this.files];
+              },
+            ],
+          };
+        } else {
+          return {
+            data: e,
+            leaf: true,
+            // children: [
+            //   {
+            //     data: { docName: 'sabuti 22', created: 2020 },
+            //     leaf: false,
+            //   },
+            // ],
+          };
+        }
       });
-    }
+      this.loaded = true;
+      console.log(this.loaded);
+    });
   }
 
-  edit(e) {
-    console.log('Document name:', e.name);
-    console.log('Document"s userId', e.useID);
+  hh(id, u: any[]) {
+    return u?.every((e) => e?.data?.id == id);
   }
 }
