@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import * as EventEmitter from 'events';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 export interface TreeNode {
   data?: any;
@@ -14,16 +13,14 @@ export interface TreeNode {
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  @Output() onExpandEvent: EventEmitter = new EventEmitter();
+  @Output() onExpandEvent: EventEmitter<any> = new EventEmitter<any>();
 
   myNode: TreeNode[];
   leaf: boolean = true;
   @Input()
   set node(v: TreeNode[]) {
     this.myNode = v;
-    console.log(v);
     this.headers = Object.keys(v[0]?.data);
-    console.log('hihi');
   }
   get node() {
     return this.myNode;
@@ -34,8 +31,6 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {}
 
   clickExpand(d) {
-    let i = this.myNode.find((e) => e.data == d.data);
-    // i = { ...i, };
     this.myNode = this.myNode.map((e) => {
       if (JSON.stringify(d.data) === JSON.stringify(e.data)) {
         return {

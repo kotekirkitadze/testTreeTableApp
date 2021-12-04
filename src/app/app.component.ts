@@ -15,30 +15,26 @@ export interface TreeNode {
 })
 export class AppComponent implements OnInit {
   constructor(private getDataService: TreeNodeService) {}
-
+  loaded = false;
   show: boolean = false;
-  packages = [];
+  packages: TreeNode[] = [];
   headers = [];
   ngOnInit() {
-    this.getDataService.getPackages().subscribe((pac) => {
-      this.packages = pac;
-      this.headers = Object.keys(this?.packages[0]);
-    });
-  }
-
-  users: any;
-  handle(p) {
-    this.getDataService.getUser(p.id).subscribe((d) => {
+    // this.getDataService.getPackages().subscribe((pac) => {
+    //   this.packages = pac;
+    //   console.log(pac);
+    //   this.headers = Object.keys(this?.packages[0]);
+    // });
+    this.getDataService.getUser().subscribe((d) => {
       this.users = [];
       this.users = [...d].map((e) => {
-        console.log('kkkk', e.name == 'kote');
         if (e.name == 'kote') {
           return {
             data: e,
             leaf: true,
             children: [
               {
-                data: { name: 'kote', age: 22 },
+                data: { docName: 'sabuti 1', created: 2021 },
                 leaf: false,
               },
             ],
@@ -47,15 +43,58 @@ export class AppComponent implements OnInit {
           return {
             data: e,
             leaf: true,
+            children: [
+              {
+                data: { docName: 'sabuti 22', created: 2020 },
+                leaf: false,
+              },
+            ],
           };
         }
       });
-      console.log(this.users);
+      this.loaded = true;
+      console.log(this.loaded);
+    });
+  }
+
+  handleExpand(e) {
+    console.log(e);
+  }
+  users: any;
+  handle(id) {
+    this.getDataService.getUser().subscribe((d) => {
+      this.users = [];
+      this.users = [...d].map((e) => {
+        if (e.name == 'kote') {
+          return {
+            data: e,
+            leaf: true,
+            children: [
+              {
+                data: { docName: 'sabuti 1', created: 2021 },
+                leaf: false,
+              },
+            ],
+          };
+        } else {
+          return {
+            data: e,
+            leaf: true,
+            // children: [
+            //   {
+            //     data: { docName: 'sabuti 22', created: 2020 },
+            //     leaf: false,
+            //   },
+            // ],
+          };
+        }
+      });
+      this.loaded = true;
+      console.log(this.loaded);
     });
   }
 
   hh(id, u: any[]) {
-    // u?.forEach((e) => console.log(e.data));
     return u?.every((e) => e?.data?.id == id);
   }
 }

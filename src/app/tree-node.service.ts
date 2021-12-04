@@ -16,9 +16,8 @@ export class TreeNodeService {
   getPackages(): Observable<TreeNode[]> {
     return this.http.get<TreeNode[]>(this.urlPackages);
   }
-  getUser(id) {
-    return this.http
-      .get<any>(this.urlUsers)
-      .pipe(map((d) => d.filter((e) => e.id == id)));
+  getUser() {
+    return this.http.get<any>(this.urlUsers);
+    // .pipe(map((d) => d.filter((e) => e.id == id)));
   }
 }
