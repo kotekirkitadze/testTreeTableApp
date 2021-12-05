@@ -16,85 +16,35 @@ export interface TreeNode {
 export class AppComponent implements OnInit {
   constructor(private getDataService: TreeNodeService) {}
   loaded = false;
-  show: boolean = false;
-  packages: TreeNode[] = [];
-  headers = [];
+  users: TreeNode[] = [];
   ngOnInit() {
-    // this.getDataService.getPackages().subscribe((pac) => {
-    //   this.packages = pac;
-    //   console.log(pac);
-    //   this.headers = Object.keys(this?.packages[0]);
-    // });
-    this.getDataService.getUser().subscribe((d) => {
-      this.users = [];
-      this.users = [...d].map((e) => {
-        if (e.name == 'kote') {
-          return {
-            data: e,
-            leaf: true,
-            children: [
-              {
-                data: { docName: 'sabuti 1', created: 2021 },
-                leaf: false,
-              },
-            ],
-          };
-        } else {
-          return {
-            data: e,
-            leaf: true,
-            children: [
-              {
-                data: { docName: 'sabuti 22', created: 2020 },
-                leaf: false,
-              },
-            ],
-          };
-        }
-      });
+    this.getDataService.getPackages().subscribe((packages) => {
       this.loaded = true;
-      console.log(this.loaded);
+      this.users = packages.map((p) => {
+        return {
+          data: p,
+          leaf: !!p['user'] ? true : false,
+        };
+      });
     });
   }
 
-  handleExpand(e) {
-    console.log(e);
-  }
-  users: any;
-  handle(id) {
-    this.getDataService.getUser().subscribe((d) => {
-      this.users = [];
-      this.users = [...d].map((e) => {
-        if (e.name == 'kote') {
+  handleExpand(p) {
+    this.getDataService.getUser(p.data.id).subscribe((users) => {
+      this.users = this.users.map((e) => {
+        if (e.data.id == p.data.id) {
           return {
-            data: e,
-            leaf: true,
-            children: [
-              {
-                data: { docName: 'sabuti 1', created: 2021 },
-                leaf: false,
-              },
-            ],
+            ...e,
+            children: users.map((u) => ({ data: u, leaf: !!u.documents })),
+            expanded: true,
           };
         } else {
-          return {
-            data: e,
-            leaf: true,
-            // children: [
-            //   {
-            //     data: { docName: 'sabuti 22', created: 2020 },
-            //     leaf: false,
-            //   },
-            // ],
-          };
+          return e;
         }
       });
-      this.loaded = true;
-      console.log(this.loaded);
-    });
-  }
 
-  hh(id, u: any[]) {
-    return u?.every((e) => e?.data?.id == id);
+      this.users = [...this.users];
+      console.log(this.users);
+    });
   }
 }

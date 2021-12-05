@@ -5,12 +5,6 @@
       "size": 10,
       "user": 1,
       "id": 22
-    },
-    {
-      "name": "arqivi1",
-      "size": 101,
-      "user": 11,
-      "id": 22122
     }
   ],
 
@@ -18,12 +12,14 @@
     {
       "name": "kote",
       "age": 21,
-      "id": 22
+      "id": 22,
+      "documents": 1
     },
     {
       "name": "theo",
       "age": 23,
-      "id": 22
+      "id": 22,
+      "documents": 0
     }
   ]
 }

@@ -28,7 +28,9 @@ export class TableComponent implements OnInit {
   constructor() {}
 
   headers: string[];
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('gaixsna');
+  }
 
   clickExpand(d) {
     this.myNode = this.myNode.map((e) => {
@@ -46,7 +48,7 @@ export class TableComponent implements OnInit {
     this.onExpandEvent.emit(d);
   }
 
-  handleThis(e) {
-    return e.expanded;
+  handleThis(item) {
+    return item.expanded && item.children?.length > 0;
   }
 }
