@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
         return {
           data: p,
           leaf: !!p['user'] ? true : false,
+          children: !!p['user'] ? null : undefined,
         };
       });
     });
