@@ -14,7 +14,12 @@
         </td>
       </tr>
       <tr *ngIf="handleThis(item)">
-        <th colspan="3"><app-table [node]="item?.children"></app-table></th>
+        <th colspan="3">
+          <app-table
+            [node]="item?.children"
+            (onExpandEvent)="clickExpand($event)"
+          ></app-table>
+        </th>
       </tr>
     </ng-container>
   </tbody>

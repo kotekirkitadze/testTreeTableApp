@@ -16,12 +16,13 @@
     }
   ],
 
-  "Users": [
+  "users": [
     {
       "name": "kote",
       "age": 21,
       "id": 22,
-      "documents": 1,
+      "documents": 2,
+      "docID": 11,
       "type": "user"
     },
     {
@@ -44,6 +45,21 @@
       "id": 11,
       "documents": 0,
       "type": "user"
+    }
+  ],
+
+  "documents": [
+    {
+      "DocName": "Personal Doc 1",
+      "created at": 2021,
+      "id": 22,
+      "docID": 11
+    },
+    {
+      "DocName": "Personal Doc 2",
+      "created at": 2022,
+      "id": 22,
+      "docID": 11
     }
   ]
 }

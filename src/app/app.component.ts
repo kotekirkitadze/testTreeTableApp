@@ -48,10 +48,51 @@ export class AppComponent implements OnInit {
               return e;
             }
           });
-
-          this.users = [...this.users];
+        });
+      } else if (p.data.type == 'user') {
+        this.getDataService.getDocs(p.data.id).subscribe((documents: any[]) => {
+          this.users = this.users.map((pac) => {
+            if (pac.children != null) {
+              return {
+                ...pac,
+                children: pac.children.map((u) => {
+                  if (u.data.docID == p.data.docID) {
+                    return {
+                      ...u,
+                      children: documents.map((d) => {
+                        return {
+                          data: d,
+                          leaf: false,
+                          expanded: true,
+                        };
+                      }),
+                    };
+                  } else {
+                    return u;
+                  }
+                }),
+              };
+            } else {
+              return pac;
+            }
+          });
         });
       }
     }
   }
 }
+
+// this.users.forEach((pack) => {
+//   if (pack.children !== null) {
+//     pack?.children.forEach((u) => {
+//       if (u?.data?.docID == p?.data?.docID) {
+//         u.children = documents.map((d) => {
+//           return {
+//             data: d,
+//             leaf: false,
+//           };
+//         });
+//       }
+//     });
+//   }
+// });

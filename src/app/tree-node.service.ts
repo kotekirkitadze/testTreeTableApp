@@ -21,4 +21,10 @@ export class TreeNodeService {
       .get<any>(this.urlUsers)
       .pipe(map((d) => d.filter((e) => e.id == id)));
   }
+
+  getDocs(id) {
+    return this.http
+      .get<any>(this.urlDocs)
+      .pipe(map((d) => d.filter((e) => e.id == id)));
+  }
 }
