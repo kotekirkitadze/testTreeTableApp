@@ -16,7 +16,6 @@ export class TableComponent implements OnInit {
   @Output() onExpandEvent: EventEmitter<any> = new EventEmitter<any>();
 
   myNode: TreeNode[];
-  leaf: boolean = true;
   @Input()
   set node(v: TreeNode[]) {
     this.myNode = v;
@@ -41,12 +40,12 @@ export class TableComponent implements OnInit {
         return e;
       }
     });
-
+    console.log('emiter', d);
     this.node = [...this.node];
     this.onExpandEvent.emit(d);
   }
 
-  handleThis(e) {
-    return e.expanded;
+  handleThis(item) {
+    return item.expanded && item.children?.length > 0;
   }
 }

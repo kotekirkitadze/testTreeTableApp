@@ -1,35 +1,3 @@
-<!-- <table class="table table-striped">
-  <thead>
-    <tr>
-      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
-    </tr>
-  </thead> -->
-<!--
-  <tbody>
-    <ng-container *ngFor="let p of packages">
-      <tr>
-        <th scope="row">
-          <button (click)="handle(p['id'])">></button>
-          {{ p["name"] }}
-        </th>
-        <th scope="row">
-          {{ p["size"] }}
-        </th>
-        <th scope="row">
-          {{ p["user"] }}
-        </th>
-        <th scope="row">
-          {{ p["id"] }}
-        </th>
-      </tr>
-      <tr class="hh" *ngIf="hh(p['id'], users)">
-        <th colspan="3"><app-table [node]="users"></app-table></th>
-      </tr>
-    </ng-container>
-  </tbody>
-</table> -->
-
-<!-- *ngIf="hh(p?.id, users)" -->
 <app-table
   (onExpandEvent)="handleExpand($event)"
   *ngIf="loaded"
