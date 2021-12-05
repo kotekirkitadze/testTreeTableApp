@@ -31,21 +31,27 @@ export class AppComponent implements OnInit {
   }
 
   handleExpand(p) {
-    this.getDataService.getUser(p.data.id).subscribe((users) => {
-      this.users = this.users.map((e) => {
-        if (e.data.id == p.data.id) {
-          return {
-            ...e,
-            children: users.map((u) => ({ data: u, leaf: !!u.documents })),
-            expanded: true,
-          };
-        } else {
-          return e;
-        }
-      });
+    if (!p.expanded && !p.children) {
+      if (p.data.type == 'package') {
+        this.getDataService.getUser(p.data.id).subscribe((users) => {
+          this.users = this.users.map((e) => {
+            if (e.data.id == p.data.id) {
+              return {
+                ...e,
+                children: users.map((u) => ({
+                  data: u,
+                  leaf: !!u['documents'] ? true : false,
+                })),
+                expanded: true,
+              };
+            } else {
+              return e;
+            }
+          });
 
-      this.users = [...this.users];
-      console.log(this.users);
-    });
+          this.users = [...this.users];
+        });
+      }
+    }
   }
 }

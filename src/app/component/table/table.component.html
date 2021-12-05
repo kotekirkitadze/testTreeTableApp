@@ -8,10 +8,7 @@
     <ng-container *ngFor="let item of node">
       <tr>
         <td *ngFor="let field of headers; let i = index">
-          <button
-            (click)="clickExpand(item)"
-            *ngIf="leaf && i == 0 && (item?.children == null || item?.children)"
-          >
+          <button (click)="clickExpand(item)" *ngIf="item.leaf && i == 0">
             ></button
           >{{ item.data[field] }}
         </td>

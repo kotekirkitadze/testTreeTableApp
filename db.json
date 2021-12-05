@@ -1,10 +1,18 @@
 {
   "packages": [
     {
-      "name": "arqivi",
+      "name": "arqivi 1",
       "size": 10,
       "user": 1,
-      "id": 22
+      "id": 22,
+      "type": "package"
+    },
+    {
+      "name": "arqivi 2",
+      "size": 10,
+      "user": 1,
+      "id": 11,
+      "type": "package"
     }
   ],
 
@@ -13,13 +21,29 @@
       "name": "kote",
       "age": 21,
       "id": 22,
-      "documents": 1
+      "documents": 1,
+      "type": "user"
     },
     {
       "name": "theo",
       "age": 23,
       "id": 22,
-      "documents": 0
+      "documents": 0,
+      "type": "user"
+    },
+    {
+      "name": "kk",
+      "age": 22,
+      "id": 11,
+      "documents": 2,
+      "type": "user"
+    },
+    {
+      "name": "ee",
+      "age": 25,
+      "id": 11,
+      "documents": 0,
+      "type": "user"
     }
   ]
 }
