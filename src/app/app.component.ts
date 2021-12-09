@@ -6,6 +6,12 @@ export interface TreeNode {
   children?: TreeNode[];
   leaf?: boolean;
   expanded?: boolean;
+  filterTypes?: FilterTypes[];
+}
+
+export interface FilterTypes {
+  header: string;
+  filterType: string;
 }
 
 @Component({
@@ -17,14 +23,29 @@ export class AppComponent implements OnInit {
   constructor(private getDataService: TreeNodeService) {}
   loaded = false;
   users: TreeNode[] = [];
+
+  o = [
+    {
+      header: 'clientName',
+      filterType: 'text',
+    },
+    {
+      header: 'clientNumber',
+      filterType: 'number',
+    },
+  ];
+
   ngOnInit() {
     this.getDataService.getPackages().subscribe((packages) => {
       this.loaded = true;
-      this.users = packages.map((p) => {
+      this.users = packages.result.map((p) => {
         return {
-          data: p,
-          leaf: !!p['user'] ? true : false,
-          children: !!p['user'] ? null : undefined,
+          data: {
+            clientName: p.clientName,
+            clientNumber: p.clientNumber,
+          },
+          leaf: true,
+          filterTypes: this.o,
         };
       });
     });
@@ -32,52 +53,22 @@ export class AppComponent implements OnInit {
 
   handleExpand(p) {
     if (!p.expanded && !p.children) {
-      if (p.data.type == 'package') {
-        this.getDataService.getUser(p.data.id).subscribe((users) => {
-          this.users = this.users.map((e) => {
-            if (e.data.id == p.data.id) {
-              return {
-                ...e,
-                children: users.map((u) => ({
-                  data: u,
-                  leaf: !!u['documents'] ? true : false,
-                })),
-                expanded: true,
-              };
-            } else {
-              return e;
-            }
-          });
+      this.getDataService.getUser().subscribe((documents) => {
+        this.users = this.users.map((e) => {
+          if (e.data.boxNumber == p.data.boxNumber) {
+            return {
+              ...e,
+              children: documents.packageResult.map((d) => ({
+                data: d,
+                leaf: false,
+              })),
+              expanded: true,
+            };
+          } else {
+            return e;
+          }
         });
-      } else if (p.data.type == 'user') {
-        this.getDataService.getDocs(p.data.id).subscribe((documents: any[]) => {
-          this.users = this.users.map((pac) => {
-            if (pac.children != null) {
-              return {
-                ...pac,
-                children: pac.children.map((u) => {
-                  if (u.data.docID == p.data.docID) {
-                    return {
-                      ...u,
-                      children: documents.map((d) => {
-                        return {
-                          data: d,
-                          leaf: false,
-                          expanded: true,
-                        };
-                      }),
-                    };
-                  } else {
-                    return u;
-                  }
-                }),
-              };
-            } else {
-              return pac;
-            }
-          });
-        });
-      }
+      });
     }
   }
 }

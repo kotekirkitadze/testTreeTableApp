@@ -9,17 +9,15 @@ import { map, Observable } from 'rxjs';
 export class TreeNodeService {
   constructor(private http: HttpClient) {}
 
-  urlPackages: string = 'http://localhost:5000/packages';
-  urlUsers: string = 'http://localhost:5000/users';
+  urlPackages: string = 'http://localhost:5000/packageResult';
+  urlUsers: string = 'http://localhost:5000/packageResultChild';
   urlDocs: string = 'http://localhost:5000/documents';
 
-  getPackages(): Observable<TreeNode[]> {
-    return this.http.get<TreeNode[]>(this.urlPackages);
+  getPackages(): Observable<any> {
+    return this.http.get<any>(this.urlPackages).pipe(map((e) => e[0]));
   }
-  getUser(id) {
-    return this.http
-      .get<any>(this.urlUsers)
-      .pipe(map((d) => d.filter((e) => e.id == id)));
+  getUser() {
+    return this.http.get<any>(this.urlUsers).pipe(map((d) => d[0]));
   }
 
   getDocs(id) {

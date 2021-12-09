@@ -1,7 +1,17 @@
 <table class="table child table-striped">
   <thead>
     <tr>
-      <th *ngFor="let h of headers" scope="col">{{ h }}</th>
+      <th *ngFor="let h of headers">
+        {{ h }}
+        <div *ngFor="let type of originalNode[0].filterTypes">
+          <app-filters
+            *ngIf="type.header == h"
+            [filterInput]="type"
+            [data]="originalNode"
+            (filterHappened)="handleFiltering($event)"
+          ></app-filters>
+        </div>
+      </th>
     </tr>
   </thead>
   <tbody>

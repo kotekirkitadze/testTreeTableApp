@@ -1,65 +1,124 @@
 {
-  "packages": [
+  "packageResult": [
     {
-      "name": "arqivi 1",
-      "size": 10,
-      "user": 1,
-      "id": 22,
-      "type": "package"
-    },
-    {
-      "name": "arqivi 2",
-      "size": 10,
-      "user": 1,
-      "id": 11,
-      "type": "package"
+      "result": [
+        {
+          "id": "300386",
+          "dateCreated": "2021-11-25T09:43:06.1005888",
+          "boxNumber": "156161616",
+          "packageStatus": "4",
+          "packageStatusName": "გასაგზავნი",
+          "businessEntityName": "test version",
+          "documentType_Id": "10",
+          "documentTypeName": "საკრედიტო ხელშეკრულება",
+          "documentSubtype_Id": "208",
+          "documentSubtypeName": "ლომბარდის ხელშეკრულებები და დღიური საბუთები",
+          "clientName": "Company",
+          "clientNumber": "63262162165",
+          "fileDocumentTypeId": "0",
+          "fileStatus": "შენახული"
+        },
+        {
+          "id": "300386",
+          "dateCreated": "2021-11-25T09:43:06.1005888",
+          "boxNumber": "156161616",
+          "packageStatus": "4",
+          "packageStatusName": "გასაგზავნი",
+          "businessEntityName": "test version",
+          "documentType_Id": "10",
+          "documentTypeName": "საკრედიტო ხელშეკრულება",
+          "documentSubtype_Id": "208",
+          "documentSubtypeName": "ლომბარდის ხელშეკრულებები და დღიური საბუთები",
+          "clientName": "TBC",
+          "clientNumber": "63262162165",
+          "fileDocumentTypeId": "0",
+          "fileStatus": "შენახული"
+        },
+        {
+          "id": "300386",
+          "dateCreated": "2021-11-25T09:43:06.1005888",
+          "boxNumber": "156161616",
+          "packageStatus": "4",
+          "packageStatusName": "გასაგზავნი",
+          "businessEntityName": "test version",
+          "documentType_Id": "10",
+          "documentTypeName": "საკრედიტო ხელშეკრულება",
+          "documentSubtype_Id": "208",
+          "documentSubtypeName": "ლომბარდის ხელშეკრულებები და დღიური საბუთები",
+          "clientName": "Caucasus",
+          "clientNumber": "63262162165",
+          "fileDocumentTypeId": "0",
+          "fileStatus": "შენახული"
+        }
+      ]
     }
   ],
 
-  "users": [
+  "packageResultChild": [
     {
-      "name": "kote",
-      "age": 21,
-      "id": 22,
-      "documents": 2,
-      "docID": 11,
-      "type": "user"
-    },
-    {
-      "name": "theo",
-      "age": 23,
-      "id": 22,
-      "documents": 0,
-      "type": "user"
-    },
-    {
-      "name": "kk",
-      "age": 22,
-      "id": 11,
-      "documents": 2,
-      "type": "user"
-    },
-    {
-      "name": "ee",
-      "age": 25,
-      "id": 11,
-      "documents": 0,
-      "type": "user"
-    }
-  ],
+      "packageResult": [
+        {
+          "id": "1000543",
+          "dateCreated": "2021-11-25T09:43:06.1005888",
 
-  "documents": [
-    {
-      "DocName": "Personal Doc 1",
-      "created at": 2021,
-      "id": 22,
-      "docID": 11
-    },
-    {
-      "DocName": "Personal Doc 2",
-      "created at": 2022,
-      "id": 22,
-      "docID": 11
+          "boxNumber": "156161616",
+
+          "userName": "teo@drm.ge",
+          "userId": "2046",
+          "packageStatus": "4",
+          "packageStatusName": "გასაგზავნი",
+
+          "businessEntityName": "test version",
+          "documentType_Id": "10",
+          "documentTypeName": "საკრედიტო ხელშეკრულება",
+          "documentSubtype_Id": "208",
+          "documentSubtypeName": "ლომბარდის ხელშეკრულებები და დღიური საბუთები",
+
+          "clientName": "yguhuih",
+          "clientNumber": "63262162165",
+
+          "documentName": "განაცხადი",
+          "documentStatus": "შენახული",
+          "documentStatusId": "1",
+
+          "documentDate": "2021-11-16T20:00:00.000Z",
+          "fileStatusId": "2",
+          "fileStatus": "შენახული",
+          "additionalField": "თარიღი:2021-11-16T20:00:00.000Z, ქალაქის ნომერი:1561616156, zip კოდი:51615615616, შექმნის თარიღი:2021-11-22T20:00:00.000Z, test ika edited:5616156, ხელშეკრულების ნომერი:516156161, "
+        },
+        {
+          "id": "1000543",
+          "dateCreated": "2021-11-25T09:43:06.1005888",
+
+          "boxNumber": "156161616",
+
+          "userName": "teo@drm.ge",
+          "userId": "2046",
+          "packageStatus": "4",
+          "packageStatusName": "გასაგზავნი",
+
+          "businessEntityName": "test version",
+          "documentType_Id": "10",
+          "documentTypeName": "საკრედიტო ხელშეკრულება",
+          "documentSubtype_Id": "208",
+          "documentSubtypeName": "ლომბარდის ხელშეკრულებები და დღიური საბუთები",
+
+          "clientName": "yguhuih",
+          "clientNumber": "63262162165",
+
+          "documentName": "განაცხადი",
+          "documentStatus": "შენახული",
+          "documentStatusId": "1",
+
+          "documentDate": "2021-11-16T20:00:00.000Z",
+          "fileStatusId": "2",
+          "fileStatus": "შენახული",
+          "additionalField": "თარიღი:2021-11-16T20:00:00.000Z, ქალაქის ნომერი:1561616156, zip კოდი:51615615616, შექმნის თარიღი:2021-11-22T20:00:00.000Z, test ika edited:5616156, ხელშეკრულების ნომერი:516156161, "
+        }
+      ],
+      "pageNumber": 0,
+      "pageSize": 0,
+      "totalRecords": 1
     }
   ]
 }

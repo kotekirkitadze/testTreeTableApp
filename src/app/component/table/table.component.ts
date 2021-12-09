@@ -1,11 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
-export interface TreeNode {
-  data?: any;
-  children?: TreeNode[];
-  leaf?: boolean;
-  expanded?: boolean;
-}
+import { TreeNode } from 'src/app/app.component';
 
 @Component({
   selector: 'app-table',
@@ -15,11 +9,17 @@ export interface TreeNode {
 export class TableComponent implements OnInit {
   @Output() onExpandEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  myNode: TreeNode[];
+  myNode: TreeNode[] = [];
+  originalNode: TreeNode[] = [];
+
   @Input()
   set node(v: TreeNode[]) {
-    this.myNode = v;
-    this.headers = Object.keys(v[0]?.data);
+    if (v[0]?.data != null) {
+      this.myNode = v;
+      this.headers = Object.keys(v[0]?.data);
+    } else {
+      this.myNode = [];
+    }
   }
   get node() {
     return this.myNode;
@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
 
   headers: string[];
   ngOnInit(): void {
-    console.log('gaixsna');
+    this.originalNode = this.myNode.slice(0);
   }
 
   clickExpand(d) {
@@ -42,12 +42,19 @@ export class TableComponent implements OnInit {
         return e;
       }
     });
-    console.log(d);
     this.node = [...this.node];
     this.onExpandEvent.emit(d);
   }
 
   handleThis(item) {
     return item.expanded && item.children?.length > 0;
+  }
+
+  handleFiltering(e) {
+    if (e.length > 0) {
+      this.node = [...e];
+    } else {
+      this.node = [];
+    }
   }
 }

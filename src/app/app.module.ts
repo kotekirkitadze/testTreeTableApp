@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 
 import { TreeTableModule } from 'primeng/treetable';
 import { TableComponent } from './component/table/table.component';
+import { FiltersComponent } from './component/filters/filters.component';
 
 @NgModule({
-  declarations: [AppComponent, TableComponent],
+  declarations: [AppComponent, TableComponent, FiltersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
