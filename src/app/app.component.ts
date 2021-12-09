@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   loaded = false;
   users: TreeNode[] = [];
 
-  o = [
+  parent = [
     {
       header: 'clientName',
       filterType: 'text',
@@ -32,6 +32,13 @@ export class AppComponent implements OnInit {
     {
       header: 'clientNumber',
       filterType: 'number',
+    },
+  ];
+
+  child = [
+    {
+      header: 'userName',
+      filterType: 'text',
     },
   ];
 
@@ -45,7 +52,7 @@ export class AppComponent implements OnInit {
             clientNumber: p.clientNumber,
           },
           leaf: true,
-          filterTypes: this.o,
+          filterTypes: this.parent,
         };
       });
     });
@@ -59,8 +66,11 @@ export class AppComponent implements OnInit {
             return {
               ...e,
               children: documents.packageResult.map((d) => ({
-                data: d,
+                data: {
+                  userName: d.userName,
+                },
                 leaf: false,
+                filterTypes: this.child,
               })),
               expanded: true,
             };

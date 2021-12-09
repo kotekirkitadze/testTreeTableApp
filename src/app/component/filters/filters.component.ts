@@ -7,7 +7,6 @@ import { FilterTypes, TreeNode } from 'src/app/app.component';
   styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent implements OnInit {
-  filterType: string = '';
   @Input() filterInput: FilterTypes;
   @Input() data: TreeNode[];
 
@@ -17,9 +16,7 @@ export class FiltersComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.filterType = this.filterInput.filterType;
-  }
+  ngOnInit(): void {}
 
   handleCases(event) {
     let searchValue: string = event.target.value.toLowerCase();
